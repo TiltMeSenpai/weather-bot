@@ -1,5 +1,5 @@
-const token  = DISCORD_TOKEN
-const pubkey = Buffer.from(DISCORD_PUBKEY, "hex")
+const token  = DISCORD_TOKEN || ""
+const pubkey = Buffer.from(DISCORD_PUBKEY || "", "hex")
 const DiscordSig = new (require("./crypto").DiscordSig)()
 const commands = require("./commands")
 
@@ -39,6 +39,7 @@ async function handlePayload(payload){
                 args[option.name] = option.value
             });
             const resp = commands[payload.data.name](args)
+            console.log(`Payload Args: ${args}`)
             console.log(`Payload data: ${JSON.stringify(payload.data)}`)
             if(typeof resp == "object"){
                 return resp

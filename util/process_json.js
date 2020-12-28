@@ -63,7 +63,7 @@ const fetch = require('node-fetch');
     });
     if(process.env.DISCORD_TOKEN && process.env.DISCORD_APPID){
         Promise.all(commands.map(async (command) => {
-            let status = await fetch(`https://discord.com/api/v8/applications/${process.env.DISCORD_APPID}/commands`,
+            let status = await fetch(`https://discord.com/api/v8/applications/${process.env.DISCORD_APPID}/guilds/700481461811282001/commands`,
                 {
                     method: "POST",
                     headers: {
