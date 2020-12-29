@@ -1,38 +1,27 @@
-const parse = require("csv-parse/lib/sync")
+const MessageEmbed = require("discord.js/src/structures/MessageEmbed")
 if(fetch == undefined)
     var fetch = require("node-fetch")
 
 /**
- * Fetch weather by an ICAO airport code
+ * Fetch weather from wttr.in
  * @param {Object} arg
- * @param {string} arg.stationstring - (Roughly) ICAO Airport code for weather report
- * @param {number} [arg.hoursbefore] - Hours before to search for weather
- * @param {boolean} [arg.asRaw] - Show raw METAR string
+ * @param {string} arg.location - Area to fetch weather for
  */
-async function weather({stationstring, hoursbefore = 1, asRaw = true}){
-    const url = "https://www.aviationweather.gov/adds/dataserver_current/httpparam?"+
-        "dataSource=metars&requestType=retrieve&format=csv&"+
-        `stationString=${encodeURIComponent(stationstring)}&hoursBeforeNow=${hoursbefore}`
-    const weather = await fetch(url).then(resp => resp.text())
-    const weather_split = weather.split("\n")
-    const header = weather_split.slice(0, 5)
-    const body = parse(weather_split.slice(5).join("\n"), {columns: true, to_line: 26})
-    console.log(url)
-    console.log(header)
-    const fields = body.map((report) => {
-            return {name: report.station_id, value: report.raw_text}
-        })
-    var embed = {
+async function weather({location}){
+    const resp = await fetch(`https://wttr.in/${encodeURIComponent(location)}?format=j1`).then(resp => resp.json())
+    const area = resp.nearest_area[0]
+    var embed = new MessageEmbed()
+            .setTitle(`Weather in ${area.areaName[0].value}, ${area.region[0].value}`)
+            .setDescription(resp.current_condition[0].weatherDesc[0].value)
+            .addField("Feels Like", `${resp.current_condition[0].FeelsLikeC} \u2103`)
+            .addField("Cloud Cover", resp.current_condition[0].cloudcover)
+            .addField("Wind",`${resp.current_condition[0].windspeedMiles} mph @ ` +
+                    resp.current_condition[0].winddir16Point)
+            .setFooter(resp.current_condition[0].localObsDateTime)
+    return {
         content: "",
-        embeds: [{
-            title: stationstring,
-            fields,
-            footer: {
-                text: `${header[2]}: ${header[4]}`
-            }
-        }]
+        embeds: [embed.toJSON()]
     }
-    return embed
 }
 
 
