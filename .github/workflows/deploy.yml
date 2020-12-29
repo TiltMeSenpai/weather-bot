@@ -17,7 +17,7 @@ jobs:
         toolchain: stable
         target: wasm32-unknown-unknown
         override: true
-    - run: cargo install wasm-pack
+    - run: npm i -g wasm-pack
     - name: Publish
       uses: cloudflare/wrangler-action@1.3.0
       with:
