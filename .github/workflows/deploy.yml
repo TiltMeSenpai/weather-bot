@@ -17,6 +17,7 @@ jobs:
         toolchain: stable
         target: wasm32-unknown-unknown
         override: true
+    - run: echo "~/.cargo/bin/" >> $GITHUB_PATH
     - uses: jetli/wasm-pack-action@v0.3.0
       with:
         # Optional version of wasm-pack to install(eg. 'v0.9.1', 'latest')
