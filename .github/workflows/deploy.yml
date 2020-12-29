@@ -18,10 +18,8 @@ jobs:
         target: wasm32-unknown-unknown
         override: true
     - run: echo "$HOME/.cargo/bin/" >> $GITHUB_PATH
-    - uses: jetli/wasm-pack-action@v0.3.0
-      with:
-        # Optional version of wasm-pack to install(eg. 'v0.9.1', 'latest')
-        version: 'latest'
+    - name: Install wasm-pack
+      run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
     - name: Check wasm-pack version
       run: wasm-pack -V
     - name: Publish
