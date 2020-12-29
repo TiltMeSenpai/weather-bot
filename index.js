@@ -17,10 +17,7 @@ async function handleRequest(request){
 
     if(sig_ok){
         const payload = JSON.parse(body)
-        const response = JSON.stringify({
-            type: 4,
-            data: await handlePayload(payload)
-        })
+        const response = JSON.stringify(await handlePayload(payload))
         console.log(`Command response: ${response}`)
         return new Response(response, {headers: {"Content-Type": "application/json"}, status: 200})
     }
