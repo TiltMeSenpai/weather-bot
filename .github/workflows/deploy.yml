@@ -17,11 +17,13 @@ jobs:
         toolchain: stable
         target: wasm32-unknown-unknown
         override: true
-    - run: echo "~/.cargo/bin/" >> $GITHUB_PATH
+    - run: echo "$HOME/.cargo/bin/" >> $GITHUB_PATH
     - uses: jetli/wasm-pack-action@v0.3.0
       with:
         # Optional version of wasm-pack to install(eg. 'v0.9.1', 'latest')
         version: 'latest'
+    - name: Check wasm-pack version
+      run: wasm-pack -V
     - name: Publish
       uses: cloudflare/wrangler-action@1.3.0
       with:
