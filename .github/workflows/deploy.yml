@@ -19,7 +19,7 @@ jobs:
         override: true
     - run: echo "$HOME/.cargo/bin/" >> $GITHUB_PATH
     - name: Install wasm-pack
-      run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      run: cargo install wasm-pack
     - name: Check wasm-pack version
       run: wasm-pack -V
     - name: Publish
