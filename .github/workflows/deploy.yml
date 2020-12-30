@@ -27,6 +27,8 @@ jobs:
           DISCORD_TOKEN
           DISCORD_APPID
           DISCORD_PUBKEY
+        preCommands: |
+          $WASM_PACK_PATH -V
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
