@@ -36,7 +36,7 @@ async function handlePayload(payload){
 
 async function handleInteraction(payload) {
     const args = {};
-    (payload.data.options || {}).forEach(option => {
+    (payload.data.options || []).forEach(option => {
         args[option.name] = option.value
     });
     console.log(`Invoke: ${payload.data.name}(${JSON.stringify(args)})`)
