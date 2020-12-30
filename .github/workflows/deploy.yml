@@ -24,8 +24,7 @@ jobs:
           ls
           echo "Install npm deps"
           npm install
-          wasm-pack -V
-          wrangler build
+          (cd crypto && wasm-pack build)
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
