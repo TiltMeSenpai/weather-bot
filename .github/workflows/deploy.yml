@@ -29,10 +29,10 @@ jobs:
           DISCORD_TOKEN
           DISCORD_APPID
           DISCORD_PUBKEY
-        preCommands: npm i
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
+        workingDirectory: "$GITHUB_WORKSPACE"
       env:
         CF_ACCOUNT_ID:  ${{ secrets.CF_ACCOUNT_ID  }}
         DISCORD_TOKEN:  ${{ secrets.DISCORD_TOKEN  }}
