@@ -39,9 +39,10 @@ async function handleInteraction(payload) {
     payload.data.options.forEach(option => {
         args[option.name] = option.value
     });
-    const resp = commands[payload.data.name](args)
-    console.log(`Payload Args: ${args}`)
+    console.log(`Payload Args: ${JSON.stringify(args)}`)
     console.log(`Payload data: ${JSON.stringify(payload.data)}`)
+    const resp = commands[payload.data.name](args)
+    console.log(`Response: ${JSON.stringify(resp)}`)
     if (typeof resp == "object") {
         return resp
     }
