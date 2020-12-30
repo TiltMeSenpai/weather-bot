@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Add npm project to $PATH
-      run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
     - name: Publish
       uses: cloudflare/wrangler-action@1.3.0
       with:
@@ -24,6 +22,7 @@ jobs:
         preCommands: |
           echo "Install rust"
           curl https://sh.rustup.rs -sSf | sh -s -- -y
+          source $HOME/.cargo/env
           npm install
           echo "Looking for wasm-pack in $WASM_PACK_PATH"
           $WASM_PACK_PATH -V
