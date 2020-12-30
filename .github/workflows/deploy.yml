@@ -21,7 +21,7 @@ jobs:
           DISCORD_PUBKEY
         preCommands: |
           export PATH="$HOME/node_modules/.bin:$PATH"
-          ls
+          ls crypto
           echo "Install npm deps"
           npm install
           cd crypto
