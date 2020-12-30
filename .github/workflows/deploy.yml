@@ -16,9 +16,9 @@ jobs:
     - name: Install NPM deps
       run: npm install
     - name: Build WASM deps
-      run:
-      - cd crypto
-      - wasm-pack build
+      run: |
+        cd crypto
+        wasm-pack build
     - name: Publish
       uses: cloudflare/wrangler-action@1.3.0
       with:
