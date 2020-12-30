@@ -1,6 +1,4 @@
 const MessageEmbed = require("discord.js/src/structures/MessageEmbed")
-if(fetch == undefined)
-    var fetch = require("node-fetch")
 
 /**
  * Fetch weather from wttr.in
