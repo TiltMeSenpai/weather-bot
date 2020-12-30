@@ -28,6 +28,7 @@ jobs:
           DISCORD_APPID
           DISCORD_PUBKEY
         preCommands: |
+          echo "Looking for wasm-pack in $WASM_PACK_PATH"
           $WASM_PACK_PATH -V
         postCommands: |
           echo "Updating interaction manifests"
@@ -37,5 +38,5 @@ jobs:
         DISCORD_TOKEN:  ${{ secrets.DISCORD_TOKEN  }}
         DISCORD_APPID:  ${{ secrets.DISCORD_APPID  }}
         DISCORD_PUBKEY: ${{ secrets.DISCORD_PUBKEY }}
-        WASM_PACK_PATH: ${{ join(github.workspace, '/node_modules/.bin/wasm-pack' )}}
+        WASM_PACK_PATH: ${{ format('{0}{1}', github.workspace, '/node_modules/.bin/wasm-pack' )}}
         
