@@ -29,10 +29,9 @@ jobs:
           DISCORD_TOKEN
           DISCORD_APPID
           DISCORD_PUBKEY
-        workingDirectory: ${{ github.workspace }}
         preCommands: |
-          echo "Running in build context:"
-          echo "$PWD"
+          echo "cd to build context: $GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
