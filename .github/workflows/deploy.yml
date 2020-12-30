@@ -32,7 +32,7 @@ jobs:
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
-        workingDirectory: "$GITHUB_WORKSPACE"
+        workingDirectory: ${{ github.workspace }}
       env:
         CF_ACCOUNT_ID:  ${{ secrets.CF_ACCOUNT_ID  }}
         DISCORD_TOKEN:  ${{ secrets.DISCORD_TOKEN  }}
