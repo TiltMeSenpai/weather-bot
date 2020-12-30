@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-    - stable
+    - dev 
   repository_dispatch:
 
 jobs:
@@ -24,8 +24,6 @@ jobs:
           curl https://sh.rustup.rs -sSf | sh -s -- -y
           source $HOME/.cargo/env
           npm install
-          echo "Looking for wasm-pack in $WASM_PACK_PATH"
-          $WASM_PACK_PATH -V
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
