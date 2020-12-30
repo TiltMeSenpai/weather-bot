@@ -25,6 +25,7 @@ jobs:
           npm install
           echo "Looking for wasm-pack in $WASM_PACK_PATH"
           $WASM_PACK_PATH -V
+          rustc -V
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
