@@ -26,11 +26,10 @@ jobs:
           DISCORD_APPID
           DISCORD_PUBKEY
         preCommands: |
-          ls
           echo "Install npm deps"
           npm install
           echo "Build WASM deps"
-          cd crypto && $GITHUB_WORKSPACE/node_modules/.bin/wasm-pack build
+          cd crypto && $HOME/node_modules/.bin/wasm-pack build
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
@@ -39,4 +38,4 @@ jobs:
         DISCORD_TOKEN:  ${{ secrets.DISCORD_TOKEN  }}
         DISCORD_APPID:  ${{ secrets.DISCORD_APPID  }}
         DISCORD_PUBKEY: ${{ secrets.DISCORD_PUBKEY }}
-        WASM_PACK_PATH:  "$GITHUB_WORKSPACE/node_modules/.bin/wasm-pack"
+        WASM_PACK_PATH:  "$HOME/node_modules/.bin/wasm-pack"
