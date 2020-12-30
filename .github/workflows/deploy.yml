@@ -26,6 +26,7 @@ jobs:
           DISCORD_APPID
           DISCORD_PUBKEY
         preCommands: |
+          ls
           echo "Install npm deps"
           npm install
           echo "Build WASM deps"
