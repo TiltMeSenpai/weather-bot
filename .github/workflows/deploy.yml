@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-    - dev
+    - stable
   repository_dispatch:
 
 jobs:
@@ -35,4 +35,3 @@ jobs:
         DISCORD_APPID:  ${{ secrets.DISCORD_APPID  }}
         DISCORD_PUBKEY: ${{ secrets.DISCORD_PUBKEY }}
         WASM_PACK_PATH: ${{ format('{0}{1}', github.workspace, '/node_modules/.bin/wasm-pack' )}}
-        
