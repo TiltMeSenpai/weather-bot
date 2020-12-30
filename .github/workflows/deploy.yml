@@ -28,6 +28,7 @@ jobs:
         preCommands: |
           echo "Install npm deps"
           npm install
+          ls
           echo "Build WASM deps"
           cd crypto && $HOME/node_modules/.bin/wasm-pack build
         postCommands: |
