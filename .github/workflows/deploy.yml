@@ -20,6 +20,7 @@ jobs:
           DISCORD_PUBKEY
         preCommands: |
           export PATH="$HOME/node_modules/.bin:$PATH"
+          ls
           echo "Install npm deps"
           npm install
           wasm-pack -V
