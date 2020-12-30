@@ -30,7 +30,7 @@ jobs:
           npm install
           ls
           echo "Build WASM deps"
-          cd crypto && $HOME/node_modules/.bin/wasm-pack build
+          (cd crypto && $HOME/node_modules/.bin/wasm-pack build)
         postCommands: |
           echo "Updating interaction manifests"
           npm run discord-deploy
