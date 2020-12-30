@@ -54,11 +54,9 @@ async function handleInteraction(payload) {
         }
     })()
     console.log(`Response: ${JSON.stringify(resp)}`)
-    if (typeof resp == "object") {
-        return resp
+    if (typeof resp == "string") {
+        return { content: resp }
     }
     else
-        return {
-            content: resp
-        }
+        return resp
 }
