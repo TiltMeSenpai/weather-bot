@@ -22,7 +22,15 @@ async function weather({location}){
     }
 }
 
+/**
+ * Replies with user display name
+*/
+async function ping({}, user){
+    return `Pong ${user.nick || user.user.username}`
+}
+
 
 module.exports = {
-    weather
+    weather,
+    ping
 }

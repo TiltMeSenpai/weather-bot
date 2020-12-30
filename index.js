@@ -40,7 +40,19 @@ async function handleInteraction(payload) {
         args[option.name] = option.value
     });
     console.log(`Invoke: ${payload.data.name}(${JSON.stringify(args)})`)
-    const resp = commands[payload.data.name](args)
+    const cmd = commands[payload.data.name]
+    const resp = (() => {
+        switch(cmd.length){
+            case 1:
+                return cmd(args)
+            case 2:
+                return cmd(args, payload.member)
+            case 3:
+                return cmd(args, payload.member, payload.channel)
+            case 4:
+                return cmd(args, payload.member, payload.channel, payload.guild)
+        }
+    })()
     console.log(`Response: ${JSON.stringify(resp)}`)
     if (typeof resp == "object") {
         return resp
