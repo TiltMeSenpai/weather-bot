@@ -19,8 +19,9 @@ jobs:
           DISCORD_APPID
           DISCORD_PUBKEY
         preCommands: |
+          export PATH="$HOME/node_modules/.bin:$PATH"
           echo "Install npm deps"
-          npm install -g wasm-pack
+          npm install
           wasm-pack -V
           ls crypto
           echo "Build WASM deps"
