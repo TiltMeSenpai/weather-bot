@@ -36,7 +36,7 @@ async function ping({}, {user}){
  */
 async function cache_put({msg}, {id, user, cache}){
     console.log(`Storing /${id}`)
-    await cache.put(`/${id}`, new Response(JSON.stringify({
+    await cache.put(`https://worker-cache/${id}`, new Response(JSON.stringify({
         msg,
         user: user.nick || user.user.username
     })))

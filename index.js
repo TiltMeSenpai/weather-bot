@@ -28,7 +28,8 @@ async function handleRequest(request){
     }
     else if(request.method == "GET"){
         console.log(`Searching for ${url.pathname}`)
-        const cached = await caches.default.match(url.pathname)
+        const cached = await caches.default.match(`https://worker-cache${url.pathname}`)
+        console.log(`Cache returned: ${cached}`)
         if(cached)
             return cached
         else {
