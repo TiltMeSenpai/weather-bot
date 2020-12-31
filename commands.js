@@ -31,6 +31,8 @@ async function ping({}, {user}){
 
 /**
  * Put a message to the Cloudflare cache (testing)
+ * @param {Object} arg
+ * @param {string} arg.msg - Message to put to the bot cache
  */
 async function cache_put({msg}, {id, user}){
     await cache_put.put(`https://localhost/${id}`, new Response(JSON.stringify({
