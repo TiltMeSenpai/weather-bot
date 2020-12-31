@@ -27,7 +27,8 @@ async function handleRequest(request){
         }
     }
     else if(request.method == "GET"){
-        const cached = await caches.default.match(`https://localhost${url.pathname}`)
+        console.log(`Searching for https://localhost${url.pathname}`)
+        const cached = await caches.default.match(`https://localhost/${url.pathname}`)
         if(cached)
             return cached
         else {
