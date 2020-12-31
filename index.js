@@ -1,6 +1,5 @@
 const pubkey = Buffer.from(globalThis.DISCORD_PUBKEY || "", "hex")
 const DiscordSig = require("./crypto")()
-const { Response } = require("node-fetch")
 const commands = require("./commands")
 
 addEventListener("fetch", event => {
