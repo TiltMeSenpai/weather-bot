@@ -34,8 +34,8 @@ async function ping({}, {user}){
  * @param {Object} arg
  * @param {string} arg.msg - Message to put to the bot cache
  */
-async function cache_put({msg}, {id, user}){
-    await caches.default.put(`https://localhost/${id}`, new Response(JSON.stringify({
+async function cache_put({msg}, {id, user, cache}){
+    await cache.put(`https://localhost/${id}`, new Response(JSON.stringify({
         msg,
         user: user.nick || user.user.username
     })))

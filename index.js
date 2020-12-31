@@ -58,7 +58,14 @@ async function handleInteraction(payload) {
             case 1:
                 return cmd(args)
             case 2:
-                return cmd(args, {user: payload.member, channel: payload.channel, guild: payload.guild, id: payload.id})
+                return cmd(args,
+                    {
+                        user: payload.member,
+                        channel: payload.channel,
+                        guild: payload.guild,
+                        id: payload.id,
+                        cache: caches.default
+                    })
         }
     })()
     console.log(`Response: ${JSON.stringify(resp)}`)
