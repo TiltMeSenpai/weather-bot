@@ -39,7 +39,7 @@ async function cache_put({msg}, {id, user, cache}){
     await cache.put(`https://worker-cache.discord.com/${id}`, new Response(JSON.stringify({
         msg,
         user: user.nick || user.user.username
-    })))
+    }), {headers: {"cache-control": "max-age=86400"}}))
     return `https://weather-bot.tilting.workers.dev/${id}`
 }
 
