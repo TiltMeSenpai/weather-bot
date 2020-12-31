@@ -26,16 +26,6 @@ async function handleRequest(request){
             return new Response("Signature Validation Failed", {status: 401})
         }
     }
-    else if(request.method == "GET"){
-        console.log(`Searching for ${url.pathname}`)
-        const cached = await caches.default.match(`https://worker-cache.discord.com${url.pathname}`, {ignoreMethod: true})
-        console.log(`Cache returned: ${cached}`)
-        if(cached)
-            return cached
-        else {
-            return new Response("Resource not found", {status: 404})
-        }
-    }
     return new Response("Unknown Request", {status: 404})
 }
 

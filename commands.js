@@ -29,23 +29,7 @@ async function ping({}, {user}){
     return `Pong ${user.nick || user.user.username}`
 }
 
-/**
- * Put a message to the Cloudflare cache (testing)
- * @param {Object} arg
- * @param {string} arg.msg - Message to put to the bot cache
- */
-async function cache_put({msg}, {id, user, cache}){
-    console.log(`Storing /${id}`)
-    await cache.put(`https://worker-cache.discord.com/${id}`, new Response(JSON.stringify({
-        msg,
-        user: user.nick || user.user.username
-    }), {headers: {"cache-control": "max-age=86400"}}))
-    return `https://weather-bot.tilting.workers.dev/${id}`
-}
-
-
 module.exports = {
     weather,
-    ping,
-    cache_put
+    ping
 }
