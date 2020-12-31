@@ -28,7 +28,7 @@ async function handleRequest(request){
     }
     else if(request.method == "GET"){
         console.log(`Searching for ${url.pathname}`)
-        const cached = await caches.default.match(`https://worker-cache.discord.com${url.pathname}`)
+        const cached = await caches.default.match(`https://worker-cache.discord.com${url.pathname}`, {ignoreMethod: true})
         console.log(`Cache returned: ${cached}`)
         if(cached)
             return cached
