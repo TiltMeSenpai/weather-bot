@@ -45,5 +45,6 @@ async function cache_put({msg}, {id, user}){
 
 module.exports = {
     weather,
-    ping
+    ping,
+    cache_put
 }
