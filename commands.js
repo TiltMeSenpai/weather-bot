@@ -25,8 +25,19 @@ async function weather({location}){
 /**
  * Replies with user display name
 */
-async function ping({}, user){
+async function ping({}, {user}){
     return `Pong ${user.nick || user.user.username}`
+}
+
+/**
+ * Put a message to the Cloudflare cache (testing)
+ */
+async function cache_put({msg}, {id, user}){
+    await cache_put.put(`https://localhost/${id}`, new Response(JSON.stringify({
+        msg,
+        user: user.nick || user.user.username
+    })))
+    return `https://weather-bot.tilting.workers.dev/${id}`
 }
 
 
