@@ -35,6 +35,7 @@ async function handleRequest(request){
             return new Response("Resource not found", {status: 404})
         }
     }
+    return new Response("Unknown Request", {status: 404})
 }
 
 async function handlePayload(payload){
