@@ -41,7 +41,7 @@ async function handleInteraction(payload) {
     });
     console.log(`Invoke: ${payload.data.name}(${JSON.stringify(args)})`)
     const cmd = commands[payload.data.name]
-    const resp = (() => {
+    const resp = await (() => {
         switch(cmd.length){
             case 1:
                 return cmd(args)
