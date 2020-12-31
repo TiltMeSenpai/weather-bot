@@ -5,7 +5,6 @@ module.exports = {
     context: __dirname,
     target: "webworker",
     entry: path.resolve(__dirname, "./index.js"),
-    devtool: "source-map",
     plugins: [
         new WasmPackPlugin({
             crateDirectory: path.resolve(__dirname, "./crypto")
