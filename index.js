@@ -61,7 +61,7 @@ async function handleInteraction(payload) {
         }
     })()
     console.log(`Response: ${JSON.stringify(resp)}`)
-    if (resp.content) {
+    if (resp.embeds) {
         return resp
     }
     else{
